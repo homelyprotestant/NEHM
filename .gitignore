@@ -2,8 +2,6 @@
 .env
 .env.*
 !.env.example
-**/app.env
-**/deploy.env
 
 # Python
 __pycache__/
@@ -36,5 +34,3 @@ Database/*.bak*
 *.npy
 *.npz
 *.h5
-
-**/secrets/
