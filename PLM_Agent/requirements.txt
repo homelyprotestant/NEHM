@@ -1,13 +1,10 @@
 faiss-cpu
-fastapi
 ftfy
-httpx
 numpy
 openai
 openpyxl
 pandas
 Pillow
-python-multipart
 python-dotenv
 pytest
 requests
@@ -17,4 +14,3 @@ tiktoken
 torch
 torchvision
 tqdm
-uvicorn[standard]

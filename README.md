@@ -1,8 +1,8 @@
 # NEHM Stable — Pipeline B v3.1
 
 Code for retraining the LongCLIP-B multiview student and running particle /
-fiber microscopy inference (FAISS neighbors, global dictionary atoms, PLM web
-interpreter).
+fiber microscopy inference (FAISS neighbors, global dictionary atoms, sample
+descriptions).
 
 **This repository does not include images or trained weights.** Place those on
 Google Drive (or any local mirror) using the layout below.
@@ -17,9 +17,8 @@ Google Drive (or any local mirror) using the layout below.
 | `Notebooks/NEHM_Global_Dictionary_Atom_Descriptions.ipynb` | Global dictionary + atom labels |
 | `nehm_pipeline/` | Shared training / encode utilities |
 | `LongCLIP/model/` | LongCLIP source + BPE vocab (no checkpoints) |
-| `PLM_Agent/` | Arbitrary-image inference + FastAPI web app |
+| `PLM_Agent/` | Dictionary interpretability + upload inference API |
 | `Database/schema_sample.csv` | Sheet2 column schema (3 example rows) |
-| `deploy/gcp/` | Optional public VM deploy scripts |
 | `README_B.md` | Full Pipeline B v3.1 contract |
 
 ## Google Drive layout (expected)
@@ -67,16 +66,17 @@ See `README_B.md` for the scale-adaptive 17-view contract and dimension notes.
 The live B stack fuses a 768-D image (`ln_post`) with 3×512 text into a
 **2304-D** teacher; prefer the notebooks over older 2048-D prose in docs.
 
-## Inference (PLM web)
+## Inference (notebooks / Python)
 
 ```bash
-cp PLM_Agent/.env.example PLM_Agent/.env   # set OPENAI_API_KEY
-pip install -r PLM_Agent/requirements-web.txt
-python -m uvicorn PLM_Agent.web.api:app --host 127.0.0.1 --port 8080
+cp PLM_Agent/.env.example PLM_Agent/.env   # set OPENAI_API_KEY when using GPT
+pip install -r PLM_Agent/requirements.txt
 ```
 
-Artifacts checked at startup are listed in `PLM_Agent/README.md`. Uploads are
-sent to OpenAI for vision / synthesis when using GPT-5.1.
+Use `Notebooks/Student_inference_embeddings_B.ipynb` and
+`Notebooks/NEHM_Global_Dictionary_Atom_Descriptions.ipynb`, or call
+`PLM_Agent.upload_inference.PLMUploadInference` from Python. Required artifacts
+are listed in `PLM_Agent/README.md`.
 
 ## Tests
 
@@ -87,5 +87,4 @@ pytest PLM_Agent/tests -q
 
 ## Secrets
 
-Never commit `PLM_Agent/.env` or `deploy/gcp/app.env`. Templates are
-`.env.example` / `app.env.example` only.
+Never commit `PLM_Agent/.env`. Use `.env.example` as the template only.

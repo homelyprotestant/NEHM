@@ -37,6 +37,4 @@ Database/*.bak*
 *.npz
 *.h5
 
-# Local web / deploy state
-NEHM_RESULTS/plm_web/
 **/secrets/
