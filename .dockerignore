@@ -1,0 +1,29 @@
+# Source control, local environments, and secrets
+.git/
+.gitignore
+.cursor/
+**/.env
+**/.env.*
+!**/.env.example
+**/.DS_Store
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.venv/
+**/venv/
+
+# Runtime artifacts are transferred once to the persistent VM disk.
+Database/
+LongCLIP/checkpoints/
+NEHM_RESULTS/
+
+# Training data and development-only trees
+NEHM/
+Notebooks/
+Colab/
+LongCLIP_Embeddings_v1/
+figures/
+backend/
+deploy/
+*.ipynb
+*.log

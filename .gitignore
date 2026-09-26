@@ -1,0 +1,42 @@
+# Secrets and local env
+.env
+.env.*
+!.env.example
+**/app.env
+**/deploy.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+dist/
+build/
+
+# OS / editor
+.DS_Store
+._*
+.idea/
+.vscode/
+
+# Large runtime artifacts (store on Google Drive)
+NEHM/
+NEHM_RESULTS/
+LongCLIP/checkpoints/
+LongCLIP_Embeddings_v1/
+Database/Material_Database.xlsx
+Database/*.bak*
+*.pth
+*.pt
+*.npy
+*.npz
+*.h5
+
+# Local web / deploy state
+NEHM_RESULTS/plm_web/
+**/secrets/
